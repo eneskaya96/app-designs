@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>App Designs — UI/UX Mockups</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0F0F12;
+    color: #E8E8ED;
+    min-height: 100vh;
+    padding: 60px 24px;
+  }
+  .container { max-width: 800px; margin: 0 auto; }
+
+  h1 {
+    font-size: 42px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #F4A261, #E76F51, #A78BFA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .subtitle {
+    text-align: center;
+    color: #6B6B78;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 48px;
+  }
+
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 20px;
+  }
+
+  .app-card {
+    background: #1A1A22;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .app-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    border-color: rgba(255,255,255,0.1);
+  }
+
+  .app-banner {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    gap: 12px;
+    position: relative;
+  }
+  .app-banner.puzzlesnap {
+    background: linear-gradient(135deg, #FFF8F0, #F4E6D0, #E8F5E9);
+  }
+  .app-banner.arrow-dash {
+    background: linear-gradient(135deg, #0A0B1E, #111328, #1A1040);
+  }
+  .app-banner.sudoku {
+    background: linear-gradient(135deg, #F0F7FF, #E3F0FF, #D6E8FF);
+  }
+
+  .app-info {
+    padding: 20px 24px 24px;
+  }
+  .app-name {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .app-desc {
+    font-size: 14px;
+    color: #6B6B78;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  .app-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .tag {
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .tag.screens { background: rgba(42,157,143,0.15); color: #2A9D8F; }
+  .tag.theme { background: rgba(244,162,97,0.15); color: #F4A261; }
+  .tag.platform { background: rgba(167,139,250,0.15); color: #A78BFA; }
+
+  footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    color: #4A4A54;
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>App Designs</h1>
+  <p class="subtitle">UI/UX mockups for mobile game concepts</p>
+
+  <div class="apps-grid">
+
+    <a class="app-card" href="puzzlesnap/index.html">
+      <div class="app-banner puzzlesnap">&#129513; &#127800; &#127754; &#127809; &#10052;</div>
+      <div class="app-info">
+        <div class="app-name">PuzzleSnap</div>
+        <div class="app-desc">Cozy jigsaw solitaire — slide cards, snap pieces, reveal watercolor artwork. Four seasonal worlds with ASMR-quality snap sounds.</div>
+        <div class="app-meta">
+          <span class="tag screens">7 Screens</span>
+          <span class="tag theme">Cozy Seasons</span>
+          <span class="tag platform">iOS</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="app-card" href="arrow-dash/index.html">
+      <div class="app-banner arrow-dash" style="color:#FFD666">&#10148; &#10070; &#9733; &#9670;</div>
+      <div class="app-info">
+        <div class="app-name">Arrow Dash</div>
+        <div class="app-desc">Cosmic space arrow puzzle — tap energy beams to clear the holographic grid. Five worlds with unique mechanics from bouncing walls to gravity.</div>
+        <div class="app-meta">
+          <span class="tag screens">8 Screens</span>
+          <span class="tag theme">Cosmic Space</span>
+          <span class="tag platform">iOS</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="app-card" href="sudoku-master/index.html">
+      <div class="app-banner sudoku" style="color:#2563EB">&#9641; &#9642; &#9643; &#128290;</div>
+      <div class="app-info">
+        <div class="app-name">Sudoku Master</div>
+        <div class="app-desc">Clean, modern Sudoku with light/dark themes, tournaments, profiles, and a satisfying victory animation.</div>
+        <div class="app-meta">
+          <span class="tag screens">7 Screens</span>
+          <span class="tag theme">Minimal</span>
+          <span class="tag platform">iOS</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <footer>App Designs &middot; April 2026</footer>
+
+</div>
+</body>
+</html>

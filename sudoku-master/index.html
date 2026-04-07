@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Modern Archivist - All Screens</title>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,700;1,400&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: #1E1B16;
+            color: #E8E0D0;
+            padding: 20px;
+            padding-bottom: 40px;
+        }
+        h1 {
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+            font-size: 28px;
+            color: #E0B85C;
+            text-align: center;
+            margin: 20px 0 8px;
+        }
+        .subtitle {
+            text-align: center;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #8B7D6B;
+            margin-bottom: 32px;
+        }
+        .screens {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .screen-card {
+            background: #2A2520;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(224, 184, 92, 0.1);
+        }
+        .screen-card a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+        .screen-preview {
+            width: 100%;
+            height: 500px;
+            border: none;
+            pointer-events: none;
+            transform-origin: top left;
+        }
+        .preview-container {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        .screen-info {
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .screen-name {
+            font-family: 'Newsreader', serif;
+            font-size: 18px;
+            color: #E8E0D0;
+        }
+        .screen-number {
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+            color: #8B7D6B;
+            font-size: 14px;
+        }
+        .screen-tag {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #E0B85C;
+            background: rgba(224, 184, 92, 0.12);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+        .tap-hint {
+            text-align: center;
+            font-size: 11px;
+            color: #8B7D6B;
+            margin-top: 24px;
+            letter-spacing: 1px;
+        }
+        .grid-view {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .grid-view .screen-card .preview-container { height: 160px; }
+        .grid-view .screen-info { padding: 10px 12px; }
+        .grid-view .screen-name { font-size: 13px; }
+        .view-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+        .view-toggle button {
+            background: #2A2520;
+            color: #8B7D6B;
+            border: 1px solid #3D372F;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-family: 'Manrope', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .view-toggle button.active {
+            background: #E0B85C;
+            color: #1E1B16;
+            border-color: #E0B85C;
+        }
+    </style>
+</head>
+<body>
+    <h1>The Modern Archivist</h1>
+    <p class="subtitle">Sudoku App Design Review</p>
+
+    <div class="view-toggle">
+        <button class="active" onclick="setView('list')">List</button>
+        <button onclick="setView('grid')">Grid</button>
+    </div>
+
+    <div class="screens" id="screens">
+        <div class="screen-card">
+            <a href="01-home.html">
+                <div class="preview-container">
+                    <iframe src="01-home.html" class="screen-preview" scrolling="no" loading="lazy"></iframe>
+                </div>
+                <div class="screen-info">
+                    <div>
+                        <div class="screen-name">Home</div>
+                        <div class="screen-number">Difficulty Selection & Daily Folio</div>
+                    </div>
+                    <span class="screen-tag">Light</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="screen-card">
+            <a href="02-gameplay-light.html">
+                <div class="preview-container">
+                    <iframe src="02-gameplay-light.html" class="screen-preview" scrolling="no" loading="lazy"></iframe>
+                </div>
+                <div class="screen-info">
+                    <div>
+                        <div class="screen-name">Gameplay</div>
+                        <div class="screen-number">Light Mode with Grid & Controls</div>
+                    </div>
+                    <span class="screen-tag">Light</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="screen-card">
+            <a href="03-gameplay-dark.html">
+                <div class="preview-container">
+                    <iframe src="03-gameplay-dark.html" class="screen-preview" scrolling="no" loading="lazy"></iframe>
+                </div>
+                <div class="screen-info">
+                    <div>
+                        <div class="screen-name">Gameplay Dark</div>
+                        <div class="screen-number">Candlelit Study Mode</div>
+                    </div>
+                    <span class="screen-tag">Dark</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="screen-card">
+            <a href="04-profile.html">
+                <div class="preview-container">
+                    <iframe src="04-profile.html" class="screen-preview" scrolling="no" loading="lazy"></iframe>
+                </div>
+                <div class="screen-info">
+                    <div>
+                        <div class="screen-name">Profile</div>
+                        <div class="screen-number">Stats, Streaks & Milestones</div>
+                    </div>
+                    <span class="screen-tag">Light</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="screen-card">
+            <a href="05-tournaments.html">
+                <div class="preview-container">
+                    <iframe src="05-tournaments.html" class="screen-preview" scrolling="no" loading="lazy"></iframe>
+                </div>
+                <div class="screen-info">
+                    <div>
+                        <div class="screen-name">Tournaments</div>
+                        <div class="screen-number">Daily, Weekly & Monthly Competitions</div>
+                    </div>
+                    <span class="screen-tag">Light</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="screen-card">
+            <a href="06-victory.html">
+                <div class="preview-container">
+                    <iframe src="06-victory.html" class="screen-preview" scrolling="no" loading="lazy"></iframe>
+                </div>
+                <div class="screen-info">
+                    <div>
+                        <div class="screen-name">Victory</div>
+                        <div class="screen-number">Wax Seal Celebration</div>
+                    </div>
+                    <span class="screen-tag">Light</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <p class="tap-hint">Tap any screen to view full size</p>
+
+    <script>
+        function setView(mode) {
+            const container = document.getElementById('screens');
+            const buttons = document.querySelectorAll('.view-toggle button');
+            buttons.forEach(b => b.classList.remove('active'));
+            if (mode === 'grid') {
+                container.classList.add('grid-view');
+                buttons[1].classList.add('active');
+            } else {
+                container.classList.remove('grid-view');
+                buttons[0].classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

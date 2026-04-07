@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>PuzzleSnap — Worlds</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Nunito Sans', sans-serif;
+    background: #FFF8F0;
+    color: #3D2C2E;
+    min-height: 100vh;
+    max-width: 430px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+  }
+
+  .header {
+    padding: 16px 20px 24px;
+    text-align: center;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 800;
+  }
+  .header p {
+    font-size: 14px;
+    color: #9B8A8C;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+  .total-stars {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 800;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-top: 12px;
+  }
+  .total-stars span { color: #F4A261; }
+
+  .worlds-list {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .world-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    position: relative;
+    transition: transform 0.2s;
+    cursor: pointer;
+  }
+  .world-card:hover { transform: translateY(-2px); }
+  .world-card.locked { opacity: 0.7; }
+
+  .world-art {
+    height: 140px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 48px;
+  }
+  .world-art.spring {
+    background: linear-gradient(135deg, #E8F5E9, #C8E6C9, #F8E8F0);
+  }
+  .world-art.summer {
+    background: linear-gradient(135deg, #E3F2FD, #B3E5FC, #FFF9C4);
+  }
+  .world-art.autumn {
+    background: linear-gradient(135deg, #FFF3E0, #FFCC80, #FFAB91);
+  }
+  .world-art.winter {
+    background: linear-gradient(135deg, #E8EAF6, #C5CAE9, #E1F5FE);
+  }
+
+  .world-content {
+    padding: 16px 20px 20px;
+  }
+  .world-name {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 2px;
+  }
+  .world-desc {
+    font-size: 13px;
+    color: #9B8A8C;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .world-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .world-progress {
+    flex: 1;
+    margin-right: 16px;
+  }
+  .progress-bar {
+    height: 8px;
+    background: #F0E8DC;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 4px;
+  }
+  .progress-fill { height: 100%; border-radius: 4px; }
+  .progress-fill.spring { background: linear-gradient(90deg, #66BB6A, #43A047); }
+  .progress-fill.summer { background: linear-gradient(90deg, #42A5F5, #1E88E5); }
+  .progress-fill.autumn { background: linear-gradient(90deg, #FFA726, #FB8C00); }
+  .progress-fill.winter { background: linear-gradient(90deg, #7986CB, #5C6BC0); }
+
+  .progress-text {
+    font-size: 12px;
+    color: #9B8A8C;
+    font-weight: 700;
+  }
+  .star-count {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 15px;
+    font-weight: 800;
+    color: #F4A261;
+  }
+
+  .play-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: transform 0.2s;
+  }
+  .play-btn:hover { transform: translateY(-1px); }
+  .play-btn.spring { background: linear-gradient(135deg, #66BB6A, #43A047); box-shadow: 0 4px 12px rgba(67,160,71,0.3); }
+  .play-btn.locked-btn {
+    background: #E0D5C7;
+    color: #9B8A8C;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  .lock-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255,248,240,0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    backdrop-filter: blur(2px);
+    border-radius: 20px;
+  }
+  .lock-icon { font-size: 36px; }
+  .lock-text {
+    font-size: 14px;
+    font-weight: 800;
+    color: #9B8A8C;
+  }
+
+  .tab-bar {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 430px;
+    background: #fff;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0 28px;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
+    border-radius: 20px 20px 0 0;
+  }
+  .tab {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    font-size: 11px; font-weight: 700; color: #C4B5B7; cursor: pointer;
+  }
+  .tab.active { color: #2A9D8F; }
+  .tab-icon { font-size: 24px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Worlds</h1>
+  <p>Explore cozy seasons</p>
+  <div class="total-stars"><span>&#9733;</span> 36 / 480 Stars</div>
+</div>
+
+<div class="worlds-list">
+
+  <!-- Spring Garden — Unlocked -->
+  <div class="world-card">
+    <div class="world-art spring">&#127800; &#127801; &#127799; &#127804;</div>
+    <div class="world-content">
+      <div class="world-name">Spring Garden</div>
+      <div class="world-desc">Cherry blossoms & meadow flowers</div>
+      <div class="world-stats">
+        <div class="world-progress">
+          <div class="progress-bar"><div class="progress-fill spring" style="width:30%"></div></div>
+          <div class="progress-text">12 / 40 levels</div>
+        </div>
+        <div class="star-count">&#9733; 36</div>
+      </div>
+      <button class="play-btn spring">Continue Playing</button>
+    </div>
+  </div>
+
+  <!-- Summer Beach — Locked -->
+  <div class="world-card locked">
+    <div class="world-art summer">&#127754; &#9968; &#127774; &#128026;</div>
+    <div class="world-content">
+      <div class="world-name">Summer Beach</div>
+      <div class="world-desc">Ocean waves & sandy shores</div>
+      <div class="world-stats">
+        <div class="world-progress">
+          <div class="progress-bar"><div class="progress-fill summer" style="width:0%"></div></div>
+          <div class="progress-text">0 / 40 levels</div>
+        </div>
+      </div>
+      <button class="play-btn locked-btn">&#128274; Unlock at 40 Stars</button>
+    </div>
+    <div class="lock-overlay">
+      <div class="lock-icon">&#128274;</div>
+      <div class="lock-text">40 Stars to unlock</div>
+    </div>
+  </div>
+
+  <!-- Autumn Forest — Locked -->
+  <div class="world-card locked">
+    <div class="world-art autumn">&#127809; &#127810; &#127811; &#127812;</div>
+    <div class="world-content">
+      <div class="world-name">Autumn Forest</div>
+      <div class="world-desc">Golden leaves & cozy trails</div>
+      <div class="world-stats">
+        <div class="world-progress">
+          <div class="progress-bar"><div class="progress-fill autumn" style="width:0%"></div></div>
+          <div class="progress-text">0 / 40 levels</div>
+        </div>
+      </div>
+      <button class="play-btn locked-btn">&#128274; Unlock at 80 Stars</button>
+    </div>
+    <div class="lock-overlay">
+      <div class="lock-icon">&#128274;</div>
+      <div class="lock-text">80 Stars to unlock</div>
+    </div>
+  </div>
+
+  <!-- Winter Cabin — Locked -->
+  <div class="world-card locked">
+    <div class="world-art winter">&#10052; &#9731; &#127956; &#127876;</div>
+    <div class="world-content">
+      <div class="world-name">Winter Cabin</div>
+      <div class="world-desc">Snowflakes & warm firelight</div>
+      <div class="world-stats">
+        <div class="world-progress">
+          <div class="progress-bar"><div class="progress-fill winter" style="width:0%"></div></div>
+          <div class="progress-text">0 / 40 levels</div>
+        </div>
+      </div>
+      <button class="play-btn locked-btn">&#128274; Unlock at 120 Stars</button>
+    </div>
+    <div class="lock-overlay">
+      <div class="lock-icon">&#128274;</div>
+      <div class="lock-text">120 Stars to unlock</div>
+    </div>
+  </div>
+
+</div>
+
+<nav class="tab-bar">
+  <div class="tab"><span class="tab-icon">&#127968;</span> Home</div>
+  <div class="tab active"><span class="tab-icon">&#127758;</span> Worlds</div>
+  <div class="tab"><span class="tab-icon">&#128197;</span> Daily</div>
+  <div class="tab"><span class="tab-icon">&#128444;</span> Gallery</div>
+</nav>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E0B85C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C6973F;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="darkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2C2318;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E1B16;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#2C2318" flood-opacity="0.15"/>
+    </filter>
+    <filter id="innerGlow">
+      <feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#E0B85C" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="240" fill="url(#darkGrad)" filter="url(#shadow)"/>
+
+  <!-- Decorative outer ring -->
+  <circle cx="256" cy="256" r="224" fill="none" stroke="#C6973F" stroke-width="1" opacity="0.3"/>
+  <circle cx="256" cy="256" r="218" fill="none" stroke="#C6973F" stroke-width="0.5" opacity="0.15"/>
+
+  <!-- Corner ornaments -->
+  <g opacity="0.2" fill="#C6973F">
+    <!-- Top left -->
+    <path d="M120,80 Q100,80 100,100 L100,95 Q100,85 110,85 L120,85 Z"/>
+    <path d="M80,120 Q80,100 100,100 L95,100 Q85,100 85,110 L85,120 Z"/>
+    <!-- Top right -->
+    <path d="M392,80 Q412,80 412,100 L412,95 Q412,85 402,85 L392,85 Z"/>
+    <path d="M432,120 Q432,100 412,100 L417,100 Q427,100 427,110 L427,120 Z"/>
+    <!-- Bottom left -->
+    <path d="M120,432 Q100,432 100,412 L100,417 Q100,427 110,427 L120,427 Z"/>
+    <path d="M80,392 Q80,412 100,412 L95,412 Q85,412 85,402 L85,392 Z"/>
+    <!-- Bottom right -->
+    <path d="M392,432 Q412,432 412,412 L412,417 Q412,427 402,427 L392,427 Z"/>
+    <path d="M432,392 Q432,412 412,412 L417,412 Q427,412 427,402 L427,392 Z"/>
+  </g>
+
+  <!-- Sudoku Grid - 3x3 main grid representing the game -->
+  <g transform="translate(148, 128)">
+    <!-- Grid background -->
+    <rect x="0" y="0" width="216" height="216" rx="8" fill="#F5F0E1" opacity="0.08"/>
+
+    <!-- Grid cells - 3x3 with thick borders -->
+    <!-- Outer border -->
+    <rect x="0" y="0" width="216" height="216" rx="6" fill="none" stroke="url(#goldGrad)" stroke-width="3"/>
+
+    <!-- Thick inner lines (3x3 box borders) -->
+    <line x1="72" y1="0" x2="72" y2="216" stroke="#C6973F" stroke-width="2.5" opacity="0.8"/>
+    <line x1="144" y1="0" x2="144" y2="216" stroke="#C6973F" stroke-width="2.5" opacity="0.8"/>
+    <line x1="0" y1="72" x2="216" y2="72" stroke="#C6973F" stroke-width="2.5" opacity="0.8"/>
+    <line x1="0" y1="144" x2="216" y2="144" stroke="#C6973F" stroke-width="2.5" opacity="0.8"/>
+
+    <!-- Thin inner lines -->
+    <line x1="24" y1="0" x2="24" y2="216" stroke="#C6973F" stroke-width="0.5" opacity="0.25"/>
+    <line x1="48" y1="0" x2="48" y2="216" stroke="#C6973F" stroke-width="0.5" opacity="0.25"/>
+    <line x1="96" y1="0" x2="96" y2="216" stroke="#C6973F" stroke-width="0.5" opacity="0.25"/>
+    <line x1="120" y1="0" x2="120" y2="216" stroke="#C6973F" stroke-width="0.5" opacity="0.25"/>
+    <line x1="168" y1="0" x2="168" y2="216" stroke="#C6973F" stroke-width="0.5" opacity="0.25"/>
+    <line x1="192" y1="0" x2="192" y2="216" stroke="#C6973F" stroke-width="0.5" opacity="0.25"/>
+    <line x1="0" y1="24" x2="216" y2="24" stroke="#C6973F" stroke-width="0.5" opacity="0.25"/>
+    <line x1="0" y1="48" x2="216" y2="48" stroke="#C6973F" stroke-width="0.5" opacity="0.25"/>
+    <line x1="0" y1="96" x2="216" y2="96" stroke="#C6973F" stroke-width="0.5" opacity="0.25"/>
+    <line x1="0" y1="120" x2="216" y2="120" stroke="#C6973F" stroke-width="0.5" opacity="0.25"/>
+    <line x1="0" y1="168" x2="216" y2="168" stroke="#C6973F" stroke-width="0.5" opacity="0.25"/>
+    <line x1="0" y1="192" x2="216" y2="192" stroke="#C6973F" stroke-width="0.5" opacity="0.25"/>
+
+    <!-- Numbers in cells - key numbers that suggest a real puzzle -->
+    <text x="12" y="20" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">5</text>
+    <text x="36" y="20" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">3</text>
+    <text x="108" y="20" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">7</text>
+
+    <text x="12" y="44" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">6</text>
+    <text x="84" y="44" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">1</text>
+    <text x="108" y="44" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">9</text>
+    <text x="132" y="44" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">5</text>
+
+    <text x="36" y="68" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">9</text>
+    <text x="60" y="68" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">8</text>
+    <text x="156" y="68" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">6</text>
+
+    <text x="12" y="92" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">8</text>
+    <text x="108" y="92" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">6</text>
+    <text x="204" y="92" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">3</text>
+
+    <!-- Center cell highlighted - the "selected" cell -->
+    <rect x="97" y="97" width="22" height="22" rx="2" fill="#E0B85C" opacity="0.15"/>
+    <rect x="97" y="97" width="22" height="22" rx="2" fill="none" stroke="#E0B85C" stroke-width="1.5" filter="url(#innerGlow)"/>
+
+    <text x="12" y="116" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">4</text>
+    <text x="84" y="116" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">8</text>
+    <text x="108" y="116" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#F5F0E1" text-anchor="middle" dominant-baseline="central">5</text>
+    <text x="132" y="116" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">3</text>
+    <text x="204" y="116" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">1</text>
+
+    <text x="12" y="140" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">7</text>
+    <text x="108" y="140" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">2</text>
+    <text x="204" y="140" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">6</text>
+
+    <text x="36" y="164" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">6</text>
+    <text x="156" y="164" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">2</text>
+    <text x="180" y="164" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">8</text>
+
+    <text x="84" y="188" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">4</text>
+    <text x="108" y="188" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">1</text>
+    <text x="132" y="188" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">9</text>
+    <text x="204" y="188" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">5</text>
+
+    <text x="108" y="212" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">8</text>
+    <text x="180" y="212" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">7</text>
+    <text x="204" y="212" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="bold" fill="#E0B85C" text-anchor="middle" dominant-baseline="central">9</text>
+  </g>
+
+  <!-- Quill pen accent - bottom right of grid -->
+  <g transform="translate(340, 290) rotate(-30)" opacity="0.5">
+    <path d="M0,0 Q5,-40 2,-80 Q0,-85 -2,-80 Q-5,-40 0,0 Z" fill="url(#goldGrad)"/>
+    <path d="M0,0 L-1,8 L0,6 L1,8 Z" fill="#C6973F"/>
+  </g>
+
+  <!-- App name text -->
+  <text x="256" y="390" font-family="'Georgia', 'Times New Roman', serif" font-size="28" font-weight="bold" font-style="italic" fill="url(#goldGrad)" text-anchor="middle" letter-spacing="1">The Modern Archivist</text>
+
+  <!-- Subtitle -->
+  <text x="256" y="418" font-family="'Georgia', 'Times New Roman', serif" font-size="11" fill="#8B7D6B" text-anchor="middle" letter-spacing="4" text-transform="uppercase">SUDOKU</text>
+
+  <!-- Decorative line under subtitle -->
+  <line x1="220" y1="432" x2="292" y2="432" stroke="#C6973F" stroke-width="0.75" opacity="0.4"/>
+
+  <!-- Small decorative dots -->
+  <circle cx="216" cy="432" r="1.5" fill="#C6973F" opacity="0.4"/>
+  <circle cx="296" cy="432" r="1.5" fill="#C6973F" opacity="0.4"/>
+</svg>

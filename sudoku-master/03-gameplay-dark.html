@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Nocturnal Study - Sudoku</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
+    <style>
+        body { font-family: 'Manrope', sans-serif; background-color: #050505; color: #E2E2E2; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+        .font-serif { font-family: 'Newsreader', serif; }
+        .sudoku-grid { display: grid; grid-template-columns: repeat(9, 1fr); border: 2px solid #2A2A2A; background-color: #111; }
+        .sudoku-cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 0.5px solid #2A2A2A; cursor: pointer; transition: background-color 0.2s; }
+        .sudoku-cell:nth-child(3n) { border-right: 2px solid #2A2A2A; }
+        .sudoku-cell:nth-child(9n) { border-right: 0.5px solid #2A2A2A; }
+        .sudoku-grid > div:nth-child(n+19):nth-child(-n+27), .sudoku-grid > div:nth-child(n+46):nth-child(-n+54) { border-bottom: 2px solid #2A2A2A; }
+        .cell-selected { background-color: #1A1A2E; box-shadow: inset 0 0 0 2px #5C5C7A; }
+        .cell-highlight { background-color: #0F0F0F; }
+        .cell-fixed { color: #7A7A7A; font-weight: 300; }
+        .cell-input { color: #A5B4FC; font-weight: 500; }
+        .cell-error { background-color: #2D1A1A; color: #F87171; }
+        .control-btn { display: flex; flex-direction: column; align-items: center; gap: 4px; opacity: 0.6; transition: opacity 0.2s, transform 0.1s; }
+        .control-btn:active { transform: scale(0.95); }
+        .control-btn.active { opacity: 1; color: #E9C46A; }
+        .num-pad-btn { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; background-color: #111; border-radius: 8px; font-size: 1.25rem; font-weight: 500; transition: background-color 0.2s; }
+        .num-pad-btn:active { background-color: #1E1E1E; }
+        .num-pad-btn.active { background-color: #1A1A2E; color: #E9C46A; box-shadow: 0 0 0 1px #E9C46A; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <header class="flex items-center justify-between px-6 py-4 fixed top-0 w-full z-50 bg-[#050505]/80 backdrop-blur-md">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full overflow-hidden border border-white/10">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop" alt="Profile" class="w-full h-full object-cover grayscale opacity-80">
+            </div>
+            <h1 class="font-serif italic text-xl text-[#A5B4FC] tracking-tight">The Archivist</h1>
+        </div>
+        <button class="material-symbols-outlined text-white/60">settings</button>
+    </header>
+    <main class="flex-grow flex flex-col pt-20 px-6 pb-32">
+        <section class="mb-6">
+            <span class="text-[10px] uppercase tracking-[0.2em] text-white/40 font-bold">Current Session</span>
+            <h2 class="font-serif text-3xl mt-1 text-white">Expert Archive VII</h2>
+            <div class="flex items-center gap-4 mt-2">
+                <span class="bg-[#E9C46A]/20 text-[#E9C46A] text-[10px] px-2 py-0.5 rounded font-bold tracking-widest uppercase">Expert</span>
+                <div class="flex items-center gap-1.5 text-white/60 text-sm">
+                    <span class="material-symbols-outlined text-sm">schedule</span>
+                    <span>04:12</span>
+                </div>
+                <button class="ml-auto flex items-center gap-2 text-xs text-[#A5B4FC] font-bold uppercase tracking-widest">
+                    <span class="material-symbols-outlined text-sm">pause_circle</span> Pause
+                </button>
+            </div>
+        </section>
+        <div class="sudoku-grid mb-8 rounded-lg overflow-hidden">
+            <div class="sudoku-cell cell-fixed">5</div><div class="sudoku-cell cell-input">3</div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell cell-fixed">7</div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell"></div>
+            <div class="sudoku-cell cell-input">6</div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell cell-fixed">1</div><div class="sudoku-cell cell-fixed">9</div><div class="sudoku-cell cell-fixed">5</div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell"></div>
+            <div class="sudoku-cell"></div><div class="sudoku-cell cell-fixed">9</div><div class="sudoku-cell cell-fixed">8</div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell cell-fixed">6</div><div class="sudoku-cell"></div><div class="sudoku-cell"></div>
+            <div class="sudoku-cell cell-fixed">8</div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell cell-fixed">6</div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell cell-fixed">3</div>
+            <div class="sudoku-cell cell-fixed">4</div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell cell-fixed">8</div><div class="sudoku-cell cell-selected font-bold text-[#E9C46A]">5</div><div class="sudoku-cell cell-fixed">3</div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell cell-fixed">1</div>
+            <div class="sudoku-cell cell-fixed">7</div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell cell-fixed">2</div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell cell-fixed">6</div>
+            <div class="sudoku-cell"></div><div class="sudoku-cell cell-fixed">6</div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell cell-fixed">2</div><div class="sudoku-cell cell-fixed">8</div><div class="sudoku-cell"></div>
+            <div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell cell-fixed">4</div><div class="sudoku-cell cell-fixed">1</div><div class="sudoku-cell cell-fixed">9</div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell cell-input">5</div>
+            <div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell cell-fixed">8</div><div class="sudoku-cell"></div><div class="sudoku-cell"></div><div class="sudoku-cell cell-fixed">7</div><div class="sudoku-cell cell-fixed">9</div>
+        </div>
+        <div class="grid grid-cols-4 gap-4 mb-8">
+            <button class="control-btn"><span class="material-symbols-outlined text-2xl">undo</span><span class="text-[9px] uppercase tracking-widest font-bold">Undo</span></button>
+            <button class="control-btn"><span class="material-symbols-outlined text-2xl">ink_eraser</span><span class="text-[9px] uppercase tracking-widest font-bold">Erase</span></button>
+            <button class="control-btn active"><span class="material-symbols-outlined text-2xl">edit_note</span><span class="text-[9px] uppercase tracking-widest font-bold">Notes On</span></button>
+            <button class="control-btn"><span class="material-symbols-outlined text-2xl">lightbulb</span><span class="text-[9px] uppercase tracking-widest font-bold">Hint</span></button>
+        </div>
+        <div class="bg-[#111] p-4 rounded-2xl border border-white/5">
+            <div class="grid grid-cols-9 gap-2">
+                <button class="num-pad-btn">1</button><button class="num-pad-btn">2</button><button class="num-pad-btn">3</button><button class="num-pad-btn">4</button><button class="num-pad-btn active">5</button><button class="num-pad-btn">6</button><button class="num-pad-btn">7</button><button class="num-pad-btn">8</button><button class="num-pad-btn">9</button>
+            </div>
+        </div>
+    </main>
+    <nav class="fixed bottom-0 w-full bg-[#050505]/95 backdrop-blur-xl border-t border-white/5 pb-8 pt-3 z-50">
+        <div class="flex justify-around items-center">
+            <a href="#" class="flex flex-col items-center gap-1 text-white/40"><span class="material-symbols-outlined">menu_book</span><span class="text-[9px] font-bold uppercase tracking-[0.1em]">Study</span></a>
+            <a href="#" class="flex flex-col items-center gap-1 text-white/40"><span class="material-symbols-outlined">inventory_2</span><span class="text-[9px] font-bold uppercase tracking-[0.1em]">Archive</span></a>
+            <a href="#" class="flex flex-col items-center gap-1 text-white/40"><span class="material-symbols-outlined">event_upcoming</span><span class="text-[9px] font-bold uppercase tracking-[0.1em]">Daily</span></a>
+            <a href="#" class="flex flex-col items-center gap-1 text-[#E9C46A]"><span class="material-symbols-outlined">account_circle</span><span class="text-[9px] font-bold uppercase tracking-[0.1em]">Profile</span></a>
+        </div>
+    </nav>
+</body>
+</html>

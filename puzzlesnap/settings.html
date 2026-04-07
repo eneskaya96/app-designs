@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>PuzzleSnap — Settings</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Nunito Sans', sans-serif;
+    background: #FFF8F0;
+    color: #3D2C2E;
+    min-height: 100vh;
+    max-width: 430px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px 24px;
+  }
+  .back-btn {
+    width: 40px; height: 40px;
+    background: #fff; border: none; border-radius: 50%;
+    font-size: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .header h1 { font-size: 28px; font-weight: 800; }
+
+  .section {
+    margin: 0 20px 16px;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  }
+  .section-title {
+    padding: 16px 20px 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #9B8A8C;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    border-bottom: 1px solid #F5EDE3;
+  }
+  .setting-item:last-child { border-bottom: none; }
+
+  .setting-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .setting-icon {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+  .setting-icon.audio { background: rgba(244,162,97,0.1); }
+  .setting-icon.visual { background: rgba(42,157,143,0.1); }
+  .setting-icon.account { background: rgba(231,111,81,0.1); }
+  .setting-icon.info { background: rgba(155,138,140,0.1); }
+
+  .setting-name { font-size: 15px; font-weight: 700; }
+  .setting-desc { font-size: 12px; color: #9B8A8C; font-weight: 600; }
+
+  /* Toggle */
+  .toggle {
+    width: 52px; height: 30px;
+    background: #E0D5C7;
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .toggle.on { background: #2A9D8F; }
+  .toggle::after {
+    content: '';
+    width: 24px; height: 24px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px; left: 3px;
+    transition: transform 0.3s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+  .toggle.on::after { transform: translateX(22px); }
+
+  .setting-arrow {
+    font-size: 18px;
+    color: #C4B5B7;
+  }
+
+  .remove-ads {
+    margin: 0 20px 16px;
+    background: linear-gradient(135deg, #F4A261, #E8924A);
+    border-radius: 20px;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(244,162,97,0.25);
+    cursor: pointer;
+  }
+  .remove-ads-title { font-size: 18px; font-weight: 800; }
+  .remove-ads-price { font-size: 14px; font-weight: 600; opacity: 0.9; margin-top: 4px; }
+
+  .version {
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    color: #C4B5B7;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <button class="back-btn">&larr;</button>
+  <h1>Settings</h1>
+</div>
+
+<div class="section">
+  <div class="section-title">Audio & Haptics</div>
+  <div class="setting-item">
+    <div class="setting-left">
+      <div class="setting-icon audio">&#127925;</div>
+      <div>
+        <div class="setting-name">Music</div>
+        <div class="setting-desc">Ambient seasonal music</div>
+      </div>
+    </div>
+    <div class="toggle on"></div>
+  </div>
+  <div class="setting-item">
+    <div class="setting-left">
+      <div class="setting-icon audio">&#128264;</div>
+      <div>
+        <div class="setting-name">Sound Effects</div>
+        <div class="setting-desc">Snap & UI sounds</div>
+      </div>
+    </div>
+    <div class="toggle on"></div>
+  </div>
+  <div class="setting-item">
+    <div class="setting-left">
+      <div class="setting-icon audio">&#128243;</div>
+      <div>
+        <div class="setting-name">Haptic Feedback</div>
+        <div class="setting-desc">Vibration on snap</div>
+      </div>
+    </div>
+    <div class="toggle on"></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Accessibility</div>
+  <div class="setting-item">
+    <div class="setting-left">
+      <div class="setting-icon visual">&#127912;</div>
+      <div>
+        <div class="setting-name">Color Blind Mode</div>
+        <div class="setting-desc">Shape indicators on cards</div>
+      </div>
+    </div>
+    <div class="toggle"></div>
+  </div>
+  <div class="setting-item">
+    <div class="setting-left">
+      <div class="setting-icon visual">&#128269;</div>
+      <div>
+        <div class="setting-name">Large Cards</div>
+        <div class="setting-desc">Bigger tap targets</div>
+      </div>
+    </div>
+    <div class="toggle"></div>
+  </div>
+  <div class="setting-item">
+    <div class="setting-left">
+      <div class="setting-icon visual">&#10024;</div>
+      <div>
+        <div class="setting-name">Reduced Motion</div>
+        <div class="setting-desc">Disable animations</div>
+      </div>
+    </div>
+    <div class="toggle"></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Notifications</div>
+  <div class="setting-item">
+    <div class="setting-left">
+      <div class="setting-icon account">&#128276;</div>
+      <div>
+        <div class="setting-name">Daily Reminder</div>
+        <div class="setting-desc">Don't miss your streak!</div>
+      </div>
+    </div>
+    <div class="toggle on"></div>
+  </div>
+</div>
+
+<div class="remove-ads">
+  <div class="remove-ads-title">&#10024; Remove All Ads</div>
+  <div class="remove-ads-price">One-time purchase — $2.99</div>
+</div>
+
+<div class="section">
+  <div class="section-title">About</div>
+  <div class="setting-item">
+    <div class="setting-left">
+      <div class="setting-icon info">&#128176;</div>
+      <div><div class="setting-name">Restore Purchases</div></div>
+    </div>
+    <span class="setting-arrow">&rarr;</span>
+  </div>
+  <div class="setting-item">
+    <div class="setting-left">
+      <div class="setting-icon info">&#11088;</div>
+      <div><div class="setting-name">Rate PuzzleSnap</div></div>
+    </div>
+    <span class="setting-arrow">&rarr;</span>
+  </div>
+  <div class="setting-item">
+    <div class="setting-left">
+      <div class="setting-icon info">&#128220;</div>
+      <div><div class="setting-name">Privacy Policy</div></div>
+    </div>
+    <span class="setting-arrow">&rarr;</span>
+  </div>
+  <div class="setting-item">
+    <div class="setting-left">
+      <div class="setting-icon info">&#128220;</div>
+      <div><div class="setting-name">Terms of Service</div></div>
+    </div>
+    <span class="setting-arrow">&rarr;</span>
+  </div>
+</div>
+
+<div class="version">PuzzleSnap v1.0.0 — Made with &#10084;</div>
+
+</body>
+</html>

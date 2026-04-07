@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>PuzzleSnap — Gallery</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Nunito Sans', sans-serif;
+    background: #FFF8F0;
+    color: #3D2C2E;
+    min-height: 100vh;
+    max-width: 430px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+  }
+
+  .header {
+    padding: 16px 20px;
+    text-align: center;
+  }
+  .header h1 { font-size: 28px; font-weight: 800; }
+  .header p { font-size: 14px; color: #9B8A8C; font-weight: 600; margin-top: 4px; }
+  .counter {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #fff; padding: 6px 16px; border-radius: 20px;
+    font-size: 14px; font-weight: 800;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-top: 10px;
+  }
+  .counter span { color: #2A9D8F; }
+
+  .filter-tabs {
+    display: flex;
+    gap: 8px;
+    padding: 16px 20px;
+    overflow-x: auto;
+  }
+  .filter-tab {
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    font-family: 'Nunito Sans', sans-serif;
+  }
+  .filter-tab.active {
+    background: #3D2C2E;
+    color: #fff;
+  }
+  .filter-tab:not(.active) {
+    background: #fff;
+    color: #9B8A8C;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 0 20px;
+  }
+
+  .gallery-item {
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .gallery-item:hover { transform: translateY(-2px); }
+
+  .gallery-image {
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    gap: 4px;
+    flex-wrap: wrap;
+    padding: 16px;
+  }
+  .gallery-image.spring { background: linear-gradient(135deg, #E8F5E9, #C8E6C9, #F8E8F0); }
+  .gallery-image.summer { background: linear-gradient(135deg, #E3F2FD, #B3E5FC, #FFF9C4); }
+  .gallery-image.autumn { background: linear-gradient(135deg, #FFF3E0, #FFCC80, #FFAB91); }
+
+  .gallery-info {
+    padding: 10px 14px 14px;
+  }
+  .gallery-name {
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 2px;
+  }
+  .gallery-world {
+    font-size: 11px;
+    color: #9B8A8C;
+    font-weight: 600;
+  }
+  .gallery-stars {
+    display: flex;
+    gap: 2px;
+    margin-top: 6px;
+    font-size: 14px;
+    color: #F4A261;
+  }
+
+  .gallery-item.locked .gallery-image {
+    background: #E8E0D4;
+    position: relative;
+  }
+  .gallery-item.locked .gallery-image::after {
+    content: '&#128274;';
+    position: absolute;
+    font-size: 28px;
+  }
+  .gallery-item.locked {
+    opacity: 0.6;
+  }
+
+  .tab-bar {
+    position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 100%; max-width: 430px; background: #fff;
+    display: flex; justify-content: space-around;
+    padding: 10px 0 28px;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
+    border-radius: 20px 20px 0 0;
+  }
+  .tab {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    font-size: 11px; font-weight: 700; color: #C4B5B7; cursor: pointer;
+  }
+  .tab.active { color: #2A9D8F; }
+  .tab-icon { font-size: 24px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>My Gallery</h1>
+  <p>Your completed puzzles</p>
+  <div class="counter"><span>&#128444;</span> 12 / 40 collected</div>
+</div>
+
+<div class="filter-tabs">
+  <button class="filter-tab active">All</button>
+  <button class="filter-tab">&#127800; Spring</button>
+  <button class="filter-tab">&#127754; Summer</button>
+  <button class="filter-tab">&#127809; Autumn</button>
+  <button class="filter-tab">&#10052; Winter</button>
+</div>
+
+<div class="gallery-grid">
+
+  <div class="gallery-item">
+    <div class="gallery-image spring">&#127800; &#127801; &#127799; &#127804;</div>
+    <div class="gallery-info">
+      <div class="gallery-name">Cherry Blossoms</div>
+      <div class="gallery-world">Spring Garden</div>
+      <div class="gallery-stars">&#9733;&#9733;&#9733;</div>
+    </div>
+  </div>
+
+  <div class="gallery-item">
+    <div class="gallery-image spring">&#127803; &#127802; &#127793; &#127807;</div>
+    <div class="gallery-info">
+      <div class="gallery-name">Meadow Walk</div>
+      <div class="gallery-world">Spring Garden</div>
+      <div class="gallery-stars">&#9733;&#9733;&#9734;</div>
+    </div>
+  </div>
+
+  <div class="gallery-item">
+    <div class="gallery-image spring">&#127795; &#127794; &#128038; &#127797;</div>
+    <div class="gallery-info">
+      <div class="gallery-name">Garden Birds</div>
+      <div class="gallery-world">Spring Garden</div>
+      <div class="gallery-stars">&#9733;&#9733;&#9733;</div>
+    </div>
+  </div>
+
+  <div class="gallery-item">
+    <div class="gallery-image spring">&#127793; &#127800; &#129716; &#127802;</div>
+    <div class="gallery-info">
+      <div class="gallery-name">Flower Path</div>
+      <div class="gallery-world">Spring Garden</div>
+      <div class="gallery-stars">&#9733;&#9734;&#9734;</div>
+    </div>
+  </div>
+
+  <div class="gallery-item">
+    <div class="gallery-image summer">&#127754; &#9968; &#127774; &#128026;</div>
+    <div class="gallery-info">
+      <div class="gallery-name">Beach Sunset</div>
+      <div class="gallery-world">Daily Puzzle</div>
+      <div class="gallery-stars">&#9733;&#9733;&#9733;</div>
+    </div>
+  </div>
+
+  <div class="gallery-item">
+    <div class="gallery-image spring">&#127811; &#127797; &#128031; &#127796;</div>
+    <div class="gallery-info">
+      <div class="gallery-name">Pond Life</div>
+      <div class="gallery-world">Spring Garden</div>
+      <div class="gallery-stars">&#9733;&#9733;&#9733;</div>
+    </div>
+  </div>
+
+  <div class="gallery-item locked">
+    <div class="gallery-image"></div>
+    <div class="gallery-info">
+      <div class="gallery-name">Level 13</div>
+      <div class="gallery-world">Spring Garden</div>
+      <div class="gallery-stars" style="color:#C4B5B7">&#9734;&#9734;&#9734;</div>
+    </div>
+  </div>
+
+  <div class="gallery-item locked">
+    <div class="gallery-image"></div>
+    <div class="gallery-info">
+      <div class="gallery-name">Level 14</div>
+      <div class="gallery-world">Spring Garden</div>
+      <div class="gallery-stars" style="color:#C4B5B7">&#9734;&#9734;&#9734;</div>
+    </div>
+  </div>
+
+</div>
+
+<nav class="tab-bar">
+  <div class="tab"><span class="tab-icon">&#127968;</span> Home</div>
+  <div class="tab"><span class="tab-icon">&#127758;</span> Worlds</div>
+  <div class="tab"><span class="tab-icon">&#128197;</span> Daily</div>
+  <div class="tab active"><span class="tab-icon">&#128444;</span> Gallery</div>
+</nav>
+
+</body>
+</html>

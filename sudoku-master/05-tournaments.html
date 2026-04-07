@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournaments & Challenges</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Manrope:wght@400;500;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #FBF9F1;
+            color: #020229;
+        }
+        .serif {
+            font-family: 'Newsreader', serif;
+        }
+    </style>
+</head>
+<body class="pb-24">
+
+    <!-- Top App Bar -->
+    <header class="fixed top-0 w-full z-50 bg-[#FBF9F1] flex justify-between items-center px-6 h-16">
+        <div class="flex items-center gap-3">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Archivist" alt="Profile" class="w-10 h-10 rounded-lg object-cover border border-[#020229]/10">
+            <h1 class="serif text-2xl tracking-tight text-[#020229]">The Archivist</h1>
+        </div>
+        <button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-black/5 transition-colors">
+            <span class="material-symbols-outlined text-[#020229]">settings</span>
+        </button>
+    </header>
+
+    <main class="pt-20 px-6 max-w-md mx-auto">
+        <!-- Section Header -->
+        <div class="mb-8">
+            <span class="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#735c00]">Grand Competitions</span>
+            <h2 class="serif text-5xl font-medium mt-2 leading-tight">Current Tournaments</h2>
+            <p class="text-slate-500 text-sm mt-6 leading-relaxed">
+                Engage your intellect across three tiers of logical mastery. From daily mental exercises to month-long endurance trials, your progress is recorded in the eternal archive.
+            </p>
+        </div>
+
+        <!-- 1. Daily Challenge -->
+        <section class="bg-white rounded-2xl overflow-hidden shadow-[0_8px_32px_rgba(27,28,23,0.04)] border border-[#020229]/5 mb-6 relative">
+            <div class="absolute top-0 right-0 opacity-10 pointer-events-none">
+                <span class="material-symbols-outlined text-[120px]">menu_book</span>
+            </div>
+
+            <div class="p-8 relative z-10">
+                <div class="flex justify-between items-start mb-6">
+                    <span class="bg-[#FED65B] text-[#735c00] text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Active Now</span>
+                    <span class="serif italic text-stone-400">No. 284</span>
+                </div>
+
+                <h3 class="serif text-4xl italic mb-4">Daily Challenge</h3>
+                <p class="text-slate-500 text-sm leading-relaxed mb-6">
+                    A curated symmetry designed for daily mental clarity. Completion rewards a scholar's mark and entry into the weekly pool.
+                </p>
+
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="flex -space-x-3">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jane" class="w-8 h-8 rounded-full border-2 border-white" alt="Scholar">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John" class="w-8 h-8 rounded-full border-2 border-white" alt="Scholar">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Mark" class="w-8 h-8 rounded-full border-2 border-white" alt="Scholar">
+                    </div>
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">+1.4k Scholars currently solving</span>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <button class="bg-[#020229] text-white px-6 py-4 rounded-xl font-bold flex items-center gap-3 hover:opacity-90 transition-all active:scale-95">
+                        <span class="uppercase tracking-widest text-xs">In Progress</span>
+                        <span class="material-symbols-outlined text-sm">play_arrow</span>
+                    </button>
+                    <div class="text-right">
+                        <span class="block text-[8px] font-bold uppercase tracking-widest text-slate-400 mb-1">Time Remaining</span>
+                        <span class="serif italic text-xl text-[#735c00]">08:14:22</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Weekly Sprint -->
+        <section class="bg-[#EBE9E1] rounded-2xl p-8 mb-6 relative overflow-hidden">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="serif text-3xl italic">Weekly Sprint</h3>
+                <span class="material-symbols-outlined text-[#735c00]">bolt</span>
+            </div>
+
+            <div class="space-y-4">
+                <p class="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400 mb-2">Leaderboard Preview</p>
+
+                <div class="flex justify-between items-center py-3 border-b border-[#020229]/5">
+                    <div class="flex items-center gap-4">
+                        <span class="serif italic text-stone-400">01</span>
+                        <span class="text-sm font-semibold">L. Da Vinci</span>
+                    </div>
+                    <span class="text-xs font-bold text-[#020229]">04:12</span>
+                </div>
+
+                <div class="flex justify-between items-center py-3 border-b border-[#020229]/5">
+                    <div class="flex items-center gap-4">
+                        <span class="serif italic text-stone-400">02</span>
+                        <span class="text-sm font-semibold">M. Curie</span>
+                    </div>
+                    <span class="text-xs font-bold text-[#020229]">04:45</span>
+                </div>
+
+                <div class="flex justify-between items-center py-3 border border-[#735c00]/30 bg-[#FBF9F1] rounded-xl px-4 -mx-2">
+                    <div class="flex items-center gap-4">
+                        <span class="serif italic text-[#735c00]">12</span>
+                        <span class="text-sm font-bold">You</span>
+                    </div>
+                    <span class="text-xs font-bold text-[#735c00]">06:22</span>
+                </div>
+            </div>
+
+            <button class="w-full mt-8 bg-white text-[#020229] py-4 rounded-xl text-[10px] font-bold uppercase tracking-[0.2em] border border-[#020229]/10 hover:bg-stone-50 transition-colors">
+                View Standings
+            </button>
+        </section>
+
+        <!-- 3. Monthly Marathon -->
+        <section class="bg-[#020F15] rounded-2xl p-8 mb-8 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+
+            <div class="relative z-10">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="h-px w-8 bg-[#FED65B]/30"></div>
+                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FED65B]">Elite Event</span>
+                </div>
+
+                <h3 class="serif text-4xl text-white mb-6 leading-tight">Monthly Marathon: <br><span class="italic">The Grand Archive</span></h3>
+
+                <p class="text-slate-400 text-sm leading-relaxed mb-10">
+                    The ultimate test of logic and patience. Complete a sequence of 30 specialized grids to earn the "Master Archivist" seal and exclusive ivory number tiles.
+                </p>
+
+                <div class="flex items-center justify-between">
+                    <button class="bg-[#FED65B] text-[#735c00] px-8 py-5 rounded-xl font-extrabold text-[10px] uppercase tracking-[0.2em] hover:brightness-105 transition-all shadow-lg shadow-[#FED65B]/10 active:scale-95">
+                        Register Now
+                    </button>
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-[#FED65B] text-2xl">workspace_premium</span>
+                        <div class="leading-none">
+                            <span class="block text-[8px] font-bold uppercase tracking-widest text-slate-500 mb-1">Event Prize</span>
+                            <span class="serif italic text-white text-lg">Golden Stylus</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 w-full z-50 bg-[#FBF9F1]/80 backdrop-blur-xl border-t border-[#020229]/5 flex justify-around items-center px-4 pb-8 pt-4">
+        <button class="flex flex-col items-center justify-center text-slate-400 px-6 py-2">
+            <span class="material-symbols-outlined mb-1">menu_book</span>
+            <span class="text-[10px] uppercase tracking-widest font-semibold">Study</span>
+        </button>
+        <button class="flex flex-col items-center justify-center text-slate-400 px-6 py-2">
+            <span class="material-symbols-outlined mb-1">inventory_2</span>
+            <span class="text-[10px] uppercase tracking-widest font-semibold">Archive</span>
+        </button>
+        <button class="flex flex-col items-center justify-center bg-[#FED65B] text-[#020229] rounded-2xl px-6 py-2">
+            <span class="material-symbols-outlined mb-1">calendar_today</span>
+            <span class="text-[10px] uppercase tracking-widest font-bold">Daily</span>
+        </button>
+        <button class="flex flex-col items-center justify-center text-slate-400 px-6 py-2">
+            <span class="material-symbols-outlined mb-1">person</span>
+            <span class="text-[10px] uppercase tracking-widest font-semibold">Profile</span>
+        </button>
+    </nav>
+
+</body>
+</html>

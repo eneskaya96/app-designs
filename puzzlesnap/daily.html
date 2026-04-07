@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>PuzzleSnap — Daily Puzzle</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Nunito Sans', sans-serif;
+    background: #FFF8F0;
+    color: #3D2C2E;
+    min-height: 100vh;
+    max-width: 430px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+  }
+
+  .header {
+    padding: 16px 20px 20px;
+    text-align: center;
+  }
+  .header h1 { font-size: 28px; font-weight: 800; }
+
+  .streak-card {
+    margin: 0 20px 20px;
+    background: linear-gradient(135deg, #E76F51, #D65A3A);
+    border-radius: 20px;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(231,111,81,0.25);
+  }
+  .streak-fire { font-size: 48px; margin-bottom: 8px; }
+  .streak-number { font-size: 36px; font-weight: 800; }
+  .streak-label { font-size: 14px; font-weight: 600; opacity: 0.9; }
+  .streak-sub { font-size: 12px; opacity: 0.7; margin-top: 4px; }
+
+  .calendar {
+    margin: 0 20px 20px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  }
+  .cal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .cal-month { font-size: 18px; font-weight: 800; }
+  .cal-nav { display: flex; gap: 8px; }
+  .cal-nav button {
+    width: 32px; height: 32px;
+    border: none; border-radius: 50%;
+    background: #F0E8DC;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .cal-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    text-align: center;
+  }
+  .cal-day-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: #9B8A8C;
+    padding-bottom: 8px;
+  }
+  .cal-day {
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    position: relative;
+  }
+  .cal-day.completed {
+    background: rgba(42,157,143,0.15);
+    color: #2A9D8F;
+  }
+  .cal-day.completed::after {
+    content: '&#10003;';
+    position: absolute;
+    bottom: 2px;
+    font-size: 8px;
+  }
+  .cal-day.today {
+    background: linear-gradient(135deg, #F4A261, #E8924A);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(244,162,97,0.3);
+  }
+  .cal-day.future { color: #C4B5B7; }
+  .cal-day.empty { visibility: hidden; }
+
+  .today-puzzle {
+    margin: 0 20px 20px;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  }
+  .today-preview {
+    height: 160px;
+    background: linear-gradient(135deg, #E3F2FD, #B3E5FC, #FFF9C4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 40px;
+    position: relative;
+  }
+  .today-badge {
+    position: absolute;
+    top: 12px; left: 12px;
+    background: rgba(244,162,97,0.9);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 10px;
+  }
+  .today-content {
+    padding: 16px 20px 20px;
+  }
+  .today-title { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
+  .today-desc { font-size: 13px; color: #9B8A8C; font-weight: 600; margin-bottom: 16px; }
+  .today-meta {
+    display: flex; gap: 16px; margin-bottom: 16px;
+  }
+  .meta-item {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 700; color: #9B8A8C;
+  }
+  .play-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #F4A261, #E8924A);
+    border: none;
+    border-radius: 14px;
+    color: #fff;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(244,162,97,0.35);
+  }
+
+  .reward-section {
+    margin: 0 20px 20px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  }
+  .reward-title { font-size: 16px; font-weight: 800; margin-bottom: 12px; }
+  .reward-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #F0E8DC;
+  }
+  .reward-item:last-child { border-bottom: none; }
+  .reward-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+  }
+  .reward-icon.r7 { background: rgba(42,157,143,0.1); }
+  .reward-icon.r30 { background: rgba(244,162,97,0.1); }
+  .reward-info { flex: 1; }
+  .reward-name { font-size: 14px; font-weight: 800; }
+  .reward-desc { font-size: 12px; color: #9B8A8C; font-weight: 600; }
+  .reward-progress {
+    font-size: 13px; font-weight: 800; color: #2A9D8F;
+  }
+
+  .tab-bar {
+    position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 100%; max-width: 430px; background: #fff;
+    display: flex; justify-content: space-around;
+    padding: 10px 0 28px;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
+    border-radius: 20px 20px 0 0;
+  }
+  .tab {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    font-size: 11px; font-weight: 700; color: #C4B5B7; cursor: pointer;
+  }
+  .tab.active { color: #F4A261; }
+  .tab-icon { font-size: 24px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Daily Puzzle</h1>
+</div>
+
+<div class="streak-card">
+  <div class="streak-fire">&#128293;</div>
+  <div class="streak-number">7 Days</div>
+  <div class="streak-label">Current Streak</div>
+  <div class="streak-sub">Best streak: 14 days</div>
+</div>
+
+<div class="calendar">
+  <div class="cal-header">
+    <div class="cal-month">April 2026</div>
+    <div class="cal-nav">
+      <button>&larr;</button>
+      <button>&rarr;</button>
+    </div>
+  </div>
+  <div class="cal-days">
+    <div class="cal-day-name">Mo</div>
+    <div class="cal-day-name">Tu</div>
+    <div class="cal-day-name">We</div>
+    <div class="cal-day-name">Th</div>
+    <div class="cal-day-name">Fr</div>
+    <div class="cal-day-name">Sa</div>
+    <div class="cal-day-name">Su</div>
+
+    <div class="cal-day empty"></div>
+    <div class="cal-day empty"></div>
+    <div class="cal-day completed">1</div>
+    <div class="cal-day completed">2</div>
+    <div class="cal-day completed">3</div>
+    <div class="cal-day completed">4</div>
+    <div class="cal-day completed">5</div>
+    <div class="cal-day completed">6</div>
+    <div class="cal-day today">7</div>
+    <div class="cal-day future">8</div>
+    <div class="cal-day future">9</div>
+    <div class="cal-day future">10</div>
+    <div class="cal-day future">11</div>
+    <div class="cal-day future">12</div>
+    <div class="cal-day future">13</div>
+    <div class="cal-day future">14</div>
+    <div class="cal-day future">15</div>
+    <div class="cal-day future">16</div>
+    <div class="cal-day future">17</div>
+    <div class="cal-day future">18</div>
+    <div class="cal-day future">19</div>
+    <div class="cal-day future">20</div>
+    <div class="cal-day future">21</div>
+    <div class="cal-day future">22</div>
+    <div class="cal-day future">23</div>
+    <div class="cal-day future">24</div>
+    <div class="cal-day future">25</div>
+    <div class="cal-day future">26</div>
+    <div class="cal-day future">27</div>
+    <div class="cal-day future">28</div>
+    <div class="cal-day future">29</div>
+    <div class="cal-day future">30</div>
+  </div>
+</div>
+
+<div class="today-puzzle">
+  <div class="today-preview">
+    <span class="today-badge">TODAY</span>
+    &#127754; &#9968; &#127774; &#128026; &#127796;
+  </div>
+  <div class="today-content">
+    <div class="today-title">Beach Sunset</div>
+    <div class="today-desc">A warm summer evening by the ocean</div>
+    <div class="today-meta">
+      <div class="meta-item">&#127922; 5x5 Grid</div>
+      <div class="meta-item">&#9733; Hard</div>
+    </div>
+    <button class="play-btn">Play Today's Puzzle</button>
+  </div>
+</div>
+
+<div class="reward-section">
+  <div class="reward-title">Streak Rewards</div>
+  <div class="reward-item">
+    <div class="reward-icon r7">&#127800;</div>
+    <div class="reward-info">
+      <div class="reward-name">Spring Frame</div>
+      <div class="reward-desc">7-day streak reward</div>
+    </div>
+    <div class="reward-progress">7/7 &#10003;</div>
+  </div>
+  <div class="reward-item">
+    <div class="reward-icon r30">&#127775;</div>
+    <div class="reward-info">
+      <div class="reward-name">Golden Puzzle Border</div>
+      <div class="reward-desc">30-day streak reward</div>
+    </div>
+    <div class="reward-progress">7/30</div>
+  </div>
+</div>
+
+<nav class="tab-bar">
+  <div class="tab"><span class="tab-icon">&#127968;</span> Home</div>
+  <div class="tab"><span class="tab-icon">&#127758;</span> Worlds</div>
+  <div class="tab active"><span class="tab-icon">&#128197;</span> Daily</div>
+  <div class="tab"><span class="tab-icon">&#128444;</span> Gallery</div>
+</nav>
+
+</body>
+</html>

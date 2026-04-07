@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PuzzleSnap — UI Mockups</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Nunito Sans', sans-serif;
+    background: #FFF8F0;
+    color: #3D2C2E;
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+
+  .container { max-width: 900px; margin: 0 auto; }
+
+  h1 {
+    font-size: 36px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .tagline {
+    text-align: center;
+    color: #9B8A8C;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    text-align: center;
+    color: #C4B5B7;
+    font-size: 13px;
+    margin-bottom: 40px;
+  }
+
+  .color-palette {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+  .swatch {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    position: relative;
+    transition: transform 0.2s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  .swatch:hover { transform: scale(1.15); }
+  .swatch::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: -22px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: #9B8A8C;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .screens-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 16px;
+  }
+
+  .screen-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .screen-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(244,162,97,0.12);
+  }
+
+  .preview-wrapper {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    background: #FFF8F0;
+  }
+  .screen-preview {
+    border: none;
+    pointer-events: none;
+    transform: scale(0.75);
+    transform-origin: top center;
+    width: 133.33%;
+    margin-left: -16.66%;
+    height: 533px;
+  }
+
+  .screen-info {
+    padding: 16px 20px 20px;
+  }
+  .screen-name {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .screen-desc {
+    font-size: 13px;
+    color: #9B8A8C;
+    font-weight: 600;
+  }
+  .badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    margin-top: 8px;
+    text-transform: uppercase;
+  }
+  .badge.amber { background: rgba(244,162,97,0.12); color: #E8924A; }
+  .badge.teal { background: rgba(42,157,143,0.12); color: #2A9D8F; }
+  .badge.coral { background: rgba(231,111,81,0.12); color: #E76F51; }
+  .badge.brown { background: rgba(61,44,46,0.08); color: #6B5355; }
+
+  footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid #F0E8DC;
+    color: #C4B5B7;
+    font-size: 12px;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>&#129513; PuzzleSnap</h1>
+  <p class="tagline">Slide. Snap. Relax.</p>
+  <p class="subtitle">Cozy Seasons Theme — UI/UX Mockups</p>
+
+  <div class="color-palette">
+    <div class="swatch" style="background:#FFF8F0;border:1px solid #E0D5C7" data-label="Cream"></div>
+    <div class="swatch" style="background:#F4A261" data-label="Amber"></div>
+    <div class="swatch" style="background:#2A9D8F" data-label="Teal"></div>
+    <div class="swatch" style="background:#E76F51" data-label="Coral"></div>
+    <div class="swatch" style="background:#3D2C2E" data-label="Brown"></div>
+    <div class="swatch" style="background:#9B8A8C" data-label="Muted"></div>
+  </div>
+
+  <div class="screens-grid">
+
+    <a class="screen-card" href="home.html">
+      <div class="preview-wrapper">
+        <iframe class="screen-preview" src="home.html" loading="lazy"></iframe>
+      </div>
+      <div class="screen-info">
+        <div class="screen-name">Home Screen</div>
+        <div class="screen-desc">Main hub — continue playing, daily puzzle, challenge mode, world previews</div>
+        <span class="badge amber">CORE SCREEN</span>
+      </div>
+    </a>
+
+    <a class="screen-card" href="gameplay.html">
+      <div class="preview-wrapper">
+        <iframe class="screen-preview" src="gameplay.html" loading="lazy"></iframe>
+      </div>
+      <div class="screen-info">
+        <div class="screen-name">Gameplay — Spring Garden</div>
+        <div class="screen-desc">4x4 card grid puzzle with face-up, face-down, snapped states, HUD & action bar</div>
+        <span class="badge teal">GAMEPLAY</span>
+      </div>
+    </a>
+
+    <a class="screen-card" href="worlds.html">
+      <div class="preview-wrapper">
+        <iframe class="screen-preview" src="worlds.html" loading="lazy"></iframe>
+      </div>
+      <div class="screen-info">
+        <div class="screen-name">Worlds Selection</div>
+        <div class="screen-desc">4 seasonal worlds — Spring, Summer, Autumn, Winter — with progress & star tracking</div>
+        <span class="badge teal">NAVIGATION</span>
+      </div>
+    </a>
+
+    <a class="screen-card" href="level-complete.html">
+      <div class="preview-wrapper">
+        <iframe class="screen-preview" src="level-complete.html" loading="lazy"></iframe>
+      </div>
+      <div class="screen-info">
+        <div class="screen-name">Level Complete</div>
+        <div class="screen-desc">Star rating, revealed artwork, stats, coin reward, gallery add</div>
+        <span class="badge coral">RETENTION</span>
+      </div>
+    </a>
+
+    <a class="screen-card" href="daily.html">
+      <div class="preview-wrapper">
+        <iframe class="screen-preview" src="daily.html" loading="lazy"></iframe>
+      </div>
+      <div class="screen-info">
+        <div class="screen-name">Daily Puzzle</div>
+        <div class="screen-desc">Streak counter, calendar, today's puzzle preview, streak rewards</div>
+        <span class="badge coral">RETENTION</span>
+      </div>
+    </a>
+
+    <a class="screen-card" href="gallery.html">
+      <div class="preview-wrapper">
+        <iframe class="screen-preview" src="gallery.html" loading="lazy"></iframe>
+      </div>
+      <div class="screen-info">
+        <div class="screen-name">My Gallery</div>
+        <div class="screen-desc">Collection of completed puzzle artworks with season filters & star ratings</div>
+        <span class="badge brown">COLLECTION</span>
+      </div>
+    </a>
+
+    <a class="screen-card" href="settings.html">
+      <div class="preview-wrapper">
+        <iframe class="screen-preview" src="settings.html" loading="lazy"></iframe>
+      </div>
+      <div class="screen-info">
+        <div class="screen-name">Settings</div>
+        <div class="screen-desc">Audio, accessibility, notifications, remove ads, restore purchases</div>
+        <span class="badge brown">UTILITY</span>
+      </div>
+    </a>
+
+  </div>
+
+  <footer>
+    PuzzleSnap — Cozy Seasons Theme &middot; April 2026
+  </footer>
+</div>
+
+</body>
+</html>

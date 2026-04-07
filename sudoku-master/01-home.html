@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Modern Archivist Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #FBF9F1;
+            color: #020229;
+            -webkit-font-smoothing: antialiased;
+        }
+        .font-serif {
+            font-family: 'Newsreader', serif;
+        }
+        .archive-card {
+            background-color: #F6F4EC;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .archive-card:active {
+            transform: scale(0.98);
+        }
+        .btn-primary {
+            background-color: #020229;
+            color: #FBF9F1;
+            transition: opacity 0.2s ease;
+        }
+        .btn-primary:active {
+            opacity: 0.8;
+        }
+        .bottom-nav {
+            background-color: rgba(251, 249, 241, 0.8);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(2, 2, 41, 0.05);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen pb-24">
+
+    <!-- Top App Bar -->
+    <header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#FBF9F1]">
+        <button class="p-2 -ml-2">
+            <span class="material-symbols-outlined text-[#020229]">menu</span>
+        </button>
+        <h1 class="font-serif text-2xl tracking-tight">The Modern Archivist</h1>
+        <button class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden flex items-center justify-center">
+             <span class="material-symbols-outlined text-slate-500">person</span>
+        </button>
+    </header>
+
+    <main class="mt-20 px-6 space-y-10">
+
+        <!-- Current Study Section -->
+        <section>
+            <div class="flex justify-between items-end mb-4">
+                <h2 class="font-serif text-3xl">Current Study</h2>
+                <span class="text-[10px] uppercase tracking-widest font-semibold opacity-40">In Progress</span>
+            </div>
+
+            <div class="archive-card rounded-2xl p-6 relative overflow-hidden">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h3 class="font-serif text-2xl mb-1">Chapter IV: Symmetry</h3>
+                        <p class="text-[10px] uppercase tracking-widest font-bold opacity-50">Manuscript Restoration</p>
+                    </div>
+                    <span class="material-symbols-outlined text-[#735c00] text-3xl">history_edu</span>
+                </div>
+
+                <div class="space-y-2 mb-8">
+                    <div class="flex justify-between items-end">
+                        <span class="font-serif italic text-lg">72% Complete</span>
+                        <span class="text-[10px] font-medium opacity-60 italic">14:22 Elapsed</span>
+                    </div>
+                    <div class="h-1.5 w-full bg-[#020229]/5 rounded-full overflow-hidden">
+                        <div class="h-full bg-[#020229] rounded-full" style="width: 72%"></div>
+                    </div>
+                </div>
+
+                <button class="w-full py-4 rounded-xl btn-primary font-serif text-lg tracking-wide uppercase">
+                    Resume Restoration
+                </button>
+            </div>
+        </section>
+
+        <!-- Daily Folio Section -->
+        <section>
+            <div class="flex justify-between items-end mb-4">
+                <h2 class="font-serif text-3xl">Daily Folio</h2>
+                <span class="text-[10px] uppercase tracking-widest font-semibold text-[#735c00]">New Entry</span>
+            </div>
+
+            <div class="bg-[#FED65B]/30 rounded-2xl p-6 relative overflow-hidden border border-[#FED65B]/50">
+                <div class="relative z-10">
+                    <h3 class="font-serif text-2xl mb-2">The Gilded Script</h3>
+                    <p class="text-sm opacity-70 leading-relaxed mb-6 max-w-[80%]">
+                        A special sequence discovered in the 17th-century vault. Limited time entry.
+                    </p>
+                    <button class="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-base">menu_book</span>
+                        Collect Today's Fragment
+                    </button>
+                </div>
+                <!-- Abstract Gilded Icon Background -->
+                <span class="material-symbols-outlined absolute -bottom-6 -right-6 text-[180px] text-[#FED65B]/20 rotate-12">
+                    edit_square
+                </span>
+            </div>
+        </section>
+
+        <!-- Archive Catalogue -->
+        <section>
+            <div class="text-center mb-8">
+                <h2 class="font-serif text-3xl mb-1">Archive Catalogue</h2>
+                <p class="text-[10px] uppercase tracking-widest font-bold opacity-40">Select Complexity Level</p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Easy -->
+                <div class="archive-card rounded-xl p-6 text-center space-y-4">
+                    <span class="material-symbols-outlined text-3xl opacity-70">flight</span>
+                    <div>
+                        <h4 class="font-serif text-xl">Easy</h4>
+                        <p class="text-[10px] uppercase tracking-widest font-bold opacity-40">Introductory</p>
+                    </div>
+                </div>
+                <!-- Medium -->
+                <div class="archive-card rounded-xl p-6 text-center space-y-4">
+                    <span class="material-symbols-outlined text-3xl opacity-70">edit</span>
+                    <div>
+                        <h4 class="font-serif text-xl">Medium</h4>
+                        <p class="text-[10px] uppercase tracking-widest font-bold opacity-40">Scholarly</p>
+                    </div>
+                </div>
+                <!-- Hard -->
+                <div class="archive-card rounded-xl p-6 text-center space-y-4">
+                    <span class="material-symbols-outlined text-3xl opacity-70">menu_book</span>
+                    <div>
+                        <h4 class="font-serif text-xl">Hard</h4>
+                        <p class="text-[10px] uppercase tracking-widest font-bold opacity-40">Academic</p>
+                    </div>
+                </div>
+                <!-- Expert -->
+                <div class="archive-card rounded-xl p-6 text-center space-y-4">
+                    <span class="material-symbols-outlined text-3xl opacity-70">person_celebrate</span>
+                    <div>
+                        <h4 class="font-serif text-xl">Expert</h4>
+                        <p class="text-[10px] uppercase tracking-widest font-bold opacity-40">Master</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 w-full z-50 px-4 pb-8 pt-2 bottom-nav">
+        <div class="flex justify-around items-center h-16">
+            <button class="flex flex-col items-center justify-center gap-1 group">
+                <div class="h-1 w-8 bg-[#020229] rounded-full mb-1"></div>
+                <span class="material-symbols-outlined text-[#020229]">grid_view</span>
+                <span class="text-[10px] font-bold uppercase tracking-widest">Library</span>
+            </button>
+            <button class="flex flex-col items-center justify-center gap-1 opacity-40">
+                <span class="material-symbols-outlined">history_edu</span>
+                <span class="text-[10px] font-bold uppercase tracking-widest">Archive</span>
+            </button>
+            <button class="flex flex-col items-center justify-center gap-1 opacity-40">
+                <span class="material-symbols-outlined">calendar_today</span>
+                <span class="text-[10px] font-bold uppercase tracking-widest">Daily</span>
+            </button>
+            <button class="flex flex-col items-center justify-center gap-1 opacity-40">
+                <span class="material-symbols-outlined">person</span>
+                <span class="text-[10px] font-bold uppercase tracking-widest">Profile</span>
+            </button>
+        </div>
+    </nav>
+
+</body>
+</html>
