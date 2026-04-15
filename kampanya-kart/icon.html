@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KartFırsat — App Icon Variants</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0B0D14;
+    color: #E8E8ED;
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+
+  h1 {
+    font-size: 36px;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 6px;
+    background: linear-gradient(135deg, #6C5CE7, #00B894, #FDCB6E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .tagline {
+    text-align: center;
+    color: #6B7280;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+  .subtitle {
+    text-align: center;
+    color: #4B5563;
+    font-size: 13px;
+    margin-bottom: 48px;
+  }
+
+  .section-title {
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #6C5CE7;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .icons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+    margin-bottom: 56px;
+  }
+
+  .icon-card {
+    background: #12141D;
+    border-radius: 24px;
+    padding: 32px 24px 24px;
+    border: 1px solid rgba(255,255,255,0.06);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .icon-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(108,92,231,0.15);
+  }
+  .icon-card.recommended {
+    border-color: rgba(108,92,231,0.4);
+    box-shadow: 0 0 0 1px rgba(108,92,231,0.2);
+  }
+  .icon-card.recommended::before {
+    content: '★ ÖNERİLEN';
+    display: block;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #FDCB6E;
+    margin-bottom: 12px;
+  }
+
+  .icon-frame {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 20px;
+    border-radius: 44px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+
+  .variant-name {
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .variant-desc {
+    font-size: 12px;
+    color: #6B7280;
+    line-height: 1.5;
+  }
+
+  /* ===== VARIANT A — Gradient Card ===== */
+  .icon-a {
+    background: linear-gradient(145deg, #6C5CE7, #4834D4);
+  }
+  .icon-a .card-shape {
+    position: absolute;
+    width: 130px;
+    height: 82px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 12px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%) rotate(-8deg);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .icon-a .card-shape::before {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    width: 28px;
+    height: 20px;
+    background: linear-gradient(135deg, #FDCB6E, #F0932B);
+    border-radius: 4px;
+  }
+  .icon-a .card-shape::after {
+    content: '••••';
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 2px;
+  }
+  .icon-a .percent-badge {
+    position: absolute;
+    bottom: 28%;
+    right: 22%;
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(135deg, #00B894, #00CEC9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 900;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(0,184,148,0.4);
+  }
+
+  /* ===== VARIANT B — Neon Minimal ===== */
+  .icon-b {
+    background: #0D0F18;
+    border: 2px solid rgba(108,92,231,0.3);
+  }
+  .icon-b .neon-card {
+    position: absolute;
+    width: 110px;
+    height: 70px;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #6C5CE7;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(108,92,231,0.3), inset 0 0 20px rgba(108,92,231,0.05);
+  }
+  .icon-b .neon-card::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 24px;
+    height: 17px;
+    border: 2px solid #FDCB6E;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(253,203,110,0.3);
+  }
+  .icon-b .neon-tag {
+    position: absolute;
+    bottom: 26%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 16px;
+    background: rgba(0,184,148,0.15);
+    border: 1px solid #00B894;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 800;
+    color: #00B894;
+    letter-spacing: 1px;
+    box-shadow: 0 0 16px rgba(0,184,148,0.2);
+  }
+
+  /* ===== VARIANT C — Stacked Cards ===== */
+  .icon-c {
+    background: linear-gradient(160deg, #1A1A2E, #16213E);
+  }
+  .icon-c .stack {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+  }
+  .icon-c .stack-card {
+    position: absolute;
+    width: 100px;
+    height: 64px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .icon-c .stack-card:nth-child(1) {
+    background: linear-gradient(135deg, #E17055, #D63031);
+    transform: translate(-30px, -10px) rotate(-12deg);
+    z-index: 1;
+  }
+  .icon-c .stack-card:nth-child(2) {
+    background: linear-gradient(135deg, #00B894, #00CEC9);
+    transform: translate(-8px, -5px) rotate(-3deg);
+    z-index: 2;
+  }
+  .icon-c .stack-card:nth-child(3) {
+    background: linear-gradient(135deg, #6C5CE7, #A29BFE);
+    transform: translate(14px, 2px) rotate(6deg);
+    z-index: 3;
+  }
+  .icon-c .spark {
+    position: absolute;
+    bottom: 22%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+  }
+
+  /* ===== VARIANT D — Bold Percent ===== */
+  .icon-d {
+    background: linear-gradient(150deg, #00B894, #00CEC9);
+  }
+  .icon-d .big-percent {
+    position: absolute;
+    top: 44%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 72px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.9);
+    text-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  .icon-d .mini-card {
+    position: absolute;
+    bottom: 18%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 44px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(4px);
+  }
+  .icon-d .mini-card::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 18px;
+    height: 13px;
+    background: #FDCB6E;
+    border-radius: 3px;
+  }
+
+  /* ===== VARIANT E — Premium Gradient (Recommended) ===== */
+  .icon-e {
+    background: linear-gradient(145deg, #1A1035, #2D1B69, #4834D4);
+  }
+  .icon-e .glow {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(108,92,231,0.4), transparent 70%);
+    border-radius: 50%;
+  }
+  .icon-e .card-main {
+    position: absolute;
+    width: 120px;
+    height: 76px;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-5deg);
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(8px);
+  }
+  .icon-e .card-main .chip {
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    width: 26px;
+    height: 18px;
+    background: linear-gradient(135deg, #FDCB6E, #F0932B);
+    border-radius: 4px;
+  }
+  .icon-e .card-main .dots {
+    position: absolute;
+    bottom: 12px;
+    left: 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 2px;
+  }
+  .icon-e .deal-badge {
+    position: absolute;
+    top: 56%;
+    right: 18%;
+    padding: 6px 14px;
+    background: linear-gradient(135deg, #00B894, #00CEC9);
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 900;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(0,184,148,0.4);
+    transform: rotate(3deg);
+  }
+  .icon-e .app-name-label {
+    position: absolute;
+    bottom: 14%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 13px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+  }
+
+  /* ===== Size Previews ===== */
+  .size-section {
+    margin-bottom: 56px;
+  }
+  .sizes-row {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .size-item {
+    text-align: center;
+  }
+  .size-item .size-icon {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto 8px;
+  }
+  .size-label {
+    font-size: 11px;
+    color: #6B7280;
+    font-weight: 600;
+  }
+
+  /* Mini icon recreations */
+  .size-icon-e {
+    background: linear-gradient(145deg, #1A1035, #2D1B69, #4834D4);
+    position: relative;
+    overflow: hidden;
+  }
+  .size-icon-e .g {
+    position: absolute;
+    background: radial-gradient(circle, rgba(108,92,231,0.4), transparent 70%);
+    border-radius: 50%;
+  }
+  .size-icon-e .c {
+    position: absolute;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .size-icon-e .ch {
+    position: absolute;
+    background: linear-gradient(135deg, #FDCB6E, #F0932B);
+  }
+  .size-icon-e .b {
+    position: absolute;
+    background: linear-gradient(135deg, #00B894, #00CEC9);
+    font-weight: 900;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    color: #4B5563;
+    font-size: 12px;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>💳 KartFırsat</h1>
+  <p class="tagline">Kampanyaları Keşfet. Tasarruf Et.</p>
+  <p class="subtitle">Banka Kartı Kampanya Uygulaması — Icon Varyantları</p>
+
+  <div class="section-title">Icon Varyantları</div>
+
+  <div class="icons-grid">
+
+    <!-- Variant A — Gradient Card -->
+    <div class="icon-card">
+      <div class="icon-frame icon-a">
+        <div class="card-shape"></div>
+        <div class="percent-badge">%</div>
+      </div>
+      <div class="variant-name">A — Gradient Card</div>
+      <div class="variant-desc">Mor gradient üzerinde yarı saydam kart silüeti + yeşil yüzde rozeti. Şık ve fintech.</div>
+    </div>
+
+    <!-- Variant B — Neon Minimal -->
+    <div class="icon-card">
+      <div class="icon-frame icon-b">
+        <div class="neon-card"></div>
+        <div class="neon-tag">KAMPANYA</div>
+      </div>
+      <div class="variant-name">B — Neon Minimal</div>
+      <div class="variant-desc">Koyu zemin, neon konturlu kart ve kampanya etiketi. Karanlık tema sevenler için.</div>
+    </div>
+
+    <!-- Variant C — Stacked Cards -->
+    <div class="icon-card">
+      <div class="icon-frame icon-c">
+        <div class="stack">
+          <div class="stack-card"></div>
+          <div class="stack-card"></div>
+          <div class="stack-card"></div>
+        </div>
+        <div class="spark">✨</div>
+      </div>
+      <div class="variant-name">C — Stacked Cards</div>
+      <div class="variant-desc">3 farklı renkte üst üste kartlar — birden fazla banka/kampanya olduğunu vurgular.</div>
+    </div>
+
+    <!-- Variant D — Bold Percent -->
+    <div class="icon-card">
+      <div class="icon-frame icon-d">
+        <div class="big-percent">%</div>
+        <div class="mini-card"></div>
+      </div>
+      <div class="variant-name">D — Bold Percent</div>
+      <div class="variant-desc">Yeşil gradient + büyük % sembolü + mini kart. İndirim/kampanya odağını anında iletir.</div>
+    </div>
+
+    <!-- Variant E — Premium (Recommended) -->
+    <div class="icon-card recommended">
+      <div class="icon-frame icon-e">
+        <div class="glow"></div>
+        <div class="card-main">
+          <div class="chip"></div>
+          <div class="dots">••••</div>
+        </div>
+        <div class="deal-badge">%50</div>
+        <div class="app-name-label">KartFırsat</div>
+      </div>
+      <div class="variant-name">E — Premium Blend</div>
+      <div class="variant-desc">Koyu mor gradient, cam efektli kart, altın chip, yeşil indirim rozeti + uygulama adı. Profesyonel ve güvenilir.</div>
+    </div>
+
+  </div>
+
+  <!-- Size Previews -->
+  <div class="size-section">
+    <div class="section-title">Boyut Önizleme — Varyant E</div>
+    <div class="sizes-row">
+
+      <!-- 1024px -->
+      <div class="size-item">
+        <div class="size-icon size-icon-e" style="width:140px;height:140px;border-radius:32px">
+          <div class="g" style="width:80px;height:80px;top:25%;left:50%;transform:translate(-50%,-50%)"></div>
+          <div class="c" style="width:82px;height:52px;top:36%;left:50%;transform:translate(-50%,-50%) rotate(-5deg);border-radius:8px">
+            <div class="ch" style="top:8px;left:10px;width:18px;height:12px;border-radius:3px"></div>
+          </div>
+          <div class="b" style="top:52%;right:14%;padding:4px 10px;border-radius:8px;font-size:11px;transform:rotate(3deg)">%50</div>
+          <div style="position:absolute;bottom:10%;left:50%;transform:translateX(-50%);font-size:9px;font-weight:800;color:rgba(255,255,255,0.7);letter-spacing:1px;white-space:nowrap">KartFırsat</div>
+        </div>
+        <div class="size-label">1024×1024</div>
+      </div>
+
+      <!-- 180px -->
+      <div class="size-item">
+        <div class="size-icon size-icon-e" style="width:90px;height:90px;border-radius:20px">
+          <div class="g" style="width:50px;height:50px;top:28%;left:50%;transform:translate(-50%,-50%)"></div>
+          <div class="c" style="width:54px;height:34px;top:38%;left:50%;transform:translate(-50%,-50%) rotate(-5deg);border-radius:6px">
+            <div class="ch" style="top:6px;left:7px;width:12px;height:8px;border-radius:2px"></div>
+          </div>
+          <div class="b" style="top:54%;right:12%;padding:3px 7px;border-radius:6px;font-size:8px;transform:rotate(3deg)">%50</div>
+        </div>
+        <div class="size-label">180×180</div>
+      </div>
+
+      <!-- 60px -->
+      <div class="size-item">
+        <div class="size-icon size-icon-e" style="width:60px;height:60px;border-radius:14px">
+          <div class="g" style="width:30px;height:30px;top:30%;left:50%;transform:translate(-50%,-50%)"></div>
+          <div class="c" style="width:36px;height:22px;top:38%;left:50%;transform:translate(-50%,-50%) rotate(-5deg);border-radius:4px">
+            <div class="ch" style="top:4px;left:5px;width:8px;height:6px;border-radius:2px"></div>
+          </div>
+          <div class="b" style="top:54%;right:10%;padding:2px 5px;border-radius:4px;font-size:6px;transform:rotate(3deg)">%</div>
+        </div>
+        <div class="size-label">60×60</div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>KartFırsat — Banka Kartı Kampanyaları &middot; Nisan 2026</footer>
+</div>
+
+</body>
+</html>
